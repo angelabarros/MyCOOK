@@ -1,0 +1,107 @@
+﻿@model List<mycook.Models.recipe>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var grid2 = new WebGrid(canPage: true, rowsPerPage: 10);
+    grid2.Bind(source: Model, rowCount: ViewBag.TotalRows, autoSortAndPage: false);
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/animate.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+    <link href="../css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+          rel="stylesheet" type="text/css" />
+    <title>Recipes</title>
+
+    <style>
+        a {
+            color: #ffffff;
+        }
+
+
+
+        .container {
+            margin-top: 20px;
+        }
+
+        #title-page {
+            font-size: 40px;
+            text-align: center;
+        }
+    </style>
+
+
+    
+</head>
+
+<body>
+    <div class="container">
+        <h2 id="title-page">Recipes</h2>
+        <nav class="navbar navbar-default">
+
+            <div class="container-fluid">
+
+                <div class="collapse navbar-collapse" style="color:#ffffff; background-color:#ffffff;">
+                    @using (Html.BeginForm("Index", "Recipes", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
+                    {
+                        <div class="form-group">
+                            <input type="text" name="search" value="@ViewBag.search" class="form-control" placeholder="search" />
+                        </div>
+                        <button type="submit" value="search" class="btn btn-success">Search</button>
+                        <button type="button" value="coisas" class="btn btn-info" onclick="location.href='@Url.Action("CreateRecipeStep1", "Recipes")'">NEW</button>
+                    }
+                </div>
+
+            </div>
+
+        </nav>
+        <div>
+            @grid2.Table(
+                tableStyle: "table table-responsive table-bordered",
+                columns: grid2.Columns(
+                    grid2.Column(columnName: "name_recipe", header: "Recipe's Name"),
+                    grid2.Column(columnName: "portions", header: "Portions"),
+                     grid2.Column(columnName: "calories_portion", header: "Calories per portion")
+                    )
+           )
+            <div class="row">
+                <div class="col-sm-6" style="color:#000000;">
+                    @grid2.PagerList(mode: WebGridPagerModes.All, paginationStyle: "pagination pagination-small pagination-right")
+                </div>
+            </div>
+
+            @Html.Hidden("dir", grid2.SortDirection)
+            @Html.Hidden("col", grid2.SortColumn)
+
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            try {
+                var dir = $('#dir').val();
+                var col = $('#col').val();
+                var header = $("th a[href*=" + col + "]");
+                if (dir == "Ascending") {
+                    header.text(header.text() + "  ▲")
+                }
+                if (dir == "Descending") {
+                    header.text(header.text() + "  ▼");
+                }
+            } catch (e) {
+
+            }
+        })
+    </script>
+</body>
+</html>

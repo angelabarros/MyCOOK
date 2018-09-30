@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="mycookModelStoreContainer" CdmEntityContainer="mycookEntities">
+    <EntitySetMapping Name="images_recipe">
+      <EntityTypeMapping TypeName="mycookModel.images_recipe">
+        <MappingFragment StoreEntitySet="images_recipe">
+          <ScalarProperty Name="id_image" ColumnName="id_image" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="id_recipe" ColumnName="id_recipe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ingredients">
+      <EntityTypeMapping TypeName="mycookModel.ingredient">
+        <MappingFragment StoreEntitySet="ingredient">
+          <ScalarProperty Name="id_ingredient" ColumnName="id_ingredient" />
+          <ScalarProperty Name="name_ingredient" ColumnName="name_ingredient" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ingredients_recipe">
+      <EntityTypeMapping TypeName="mycookModel.ingredients_recipe">
+        <MappingFragment StoreEntitySet="ingredients_recipe">
+          <ScalarProperty Name="id_recipe" ColumnName="id_recipe" />
+          <ScalarProperty Name="id_ingredient" ColumnName="id_ingredient" />
+          <ScalarProperty Name="quantity_per_portion" ColumnName="quantity_per_portion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ingredients_to_buy">
+      <EntityTypeMapping TypeName="mycookModel.ingredients_to_buy">
+        <MappingFragment StoreEntitySet="ingredients_to_buy">
+          <ScalarProperty Name="id_shoppinglist" ColumnName="id_shoppinglist" />
+          <ScalarProperty Name="id_ingredient" ColumnName="id_ingredient" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="meal_plan">
+      <EntityTypeMapping TypeName="mycookModel.meal_plan">
+        <MappingFragment StoreEntitySet="meal_plan">
+          <ScalarProperty Name="id_mealplan" ColumnName="id_mealplan" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="preference_plan">
+      <EntityTypeMapping TypeName="mycookModel.preference_plan">
+        <MappingFragment StoreEntitySet="preference_plan">
+          <ScalarProperty Name="id_preference" ColumnName="id_preference" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="preferences">
+      <EntityTypeMapping TypeName="mycookModel.preference">
+        <MappingFragment StoreEntitySet="preferences">
+          <ScalarProperty Name="id_preference" ColumnName="id_preference" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="recipes">
+      <EntityTypeMapping TypeName="mycookModel.recipe">
+        <MappingFragment StoreEntitySet="recipe">
+          <ScalarProperty Name="id_recipe" ColumnName="id_recipe" />
+          <ScalarProperty Name="name_recipe" ColumnName="name_recipe" />
+          <ScalarProperty Name="calories_portion" ColumnName="calories_portion" />
+          <ScalarProperty Name="portions" ColumnName="portions" />
+          <ScalarProperty Name="fat_per_portion" ColumnName="fat_per_portion" />
+          <ScalarProperty Name="saturatedfat_per_portion" ColumnName="saturatedfat_per_portion" />
+          <ScalarProperty Name="protein_per_portion" ColumnName="protein_per_portion" />
+          <ScalarProperty Name="sodium_per_portion" ColumnName="sodium_per_portion" />
+          <ScalarProperty Name="cholesterol_per_portion" ColumnName="cholesterol_per_portion" />
+          <ScalarProperty Name="carbs_per_portion" ColumnName="carbs_per_portion" />
+          <ScalarProperty Name="sugar_per_portion" ColumnName="sugar_per_portion" />
+          <ScalarProperty Name="fibre_per_portion" ColumnName="fibre_per_portion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shopping_list">
+      <EntityTypeMapping TypeName="mycookModel.shopping_list">
+        <MappingFragment StoreEntitySet="shopping_list">
+          <ScalarProperty Name="id_mealplan" ColumnName="id_mealplan" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="id_shoppinglist" ColumnName="id_shoppinglist" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="steps">
+      <EntityTypeMapping TypeName="mycookModel.step">
+        <MappingFragment StoreEntitySet="steps">
+          <ScalarProperty Name="number_order" ColumnName="number_order" />
+          <ScalarProperty Name="id_step" ColumnName="id_step" />
+          <ScalarProperty Name="id_recipe" ColumnName="id_recipe" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="mycookModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="mycookModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="subscription" ColumnName="subscription" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="favorite_recipes" TypeName="mycookModel.favorite_recipes" StoreEntitySet="favorite_recipes">
+      <EndProperty Name="recipe">
+        <ScalarProperty Name="id_recipe" ColumnName="id_recipe" />
+      </EndProperty>
+      <EndProperty Name="users">
+        <ScalarProperty Name="id_user" ColumnName="id_user" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="recipe_preferences" TypeName="mycookModel.recipe_preferences" StoreEntitySet="recipe_preferences">
+      <EndProperty Name="preferences">
+        <ScalarProperty Name="id_preference" ColumnName="id_preference" />
+      </EndProperty>
+      <EndProperty Name="recipe">
+        <ScalarProperty Name="id_recipe" ColumnName="id_recipe" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="recipes_mealplan" TypeName="mycookModel.recipes_mealplan" StoreEntitySet="recipes_mealplan">
+      <EndProperty Name="meal_plan">
+        <ScalarProperty Name="id_mealplan" ColumnName="id_mealplan" />
+      </EndProperty>
+      <EndProperty Name="recipe">
+        <ScalarProperty Name="id_recipe" ColumnName="id_recipe" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="user_preferences" TypeName="mycookModel.user_preferences" StoreEntitySet="user_preferences">
+      <EndProperty Name="preferences">
+        <ScalarProperty Name="id_preference" ColumnName="id_preference" />
+      </EndProperty>
+      <EndProperty Name="users">
+        <ScalarProperty Name="id_user" ColumnName="id_user" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

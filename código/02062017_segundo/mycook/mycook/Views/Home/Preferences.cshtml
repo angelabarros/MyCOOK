@@ -1,0 +1,210 @@
+﻿@model List<mycook.Models.preference>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var grid = new WebGrid(canPage: true, rowsPerPage: 10);
+    grid.Bind(source: Model, rowCount: ViewBag.TotalRows, autoSortAndPage: false);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/animate.min.css" rel="stylesheet" type="text/css" />
+   
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+  
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+    <link href="../css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+          rel="stylesheet" type="text/css" />
+    <style>
+        a {
+            color: #ffffff;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        #title-page {
+            font-size: 40px;
+            text-align: center;
+        }
+
+        #exemplo {
+           position:center;
+           vertical-align:central;
+           
+        }
+
+        .modal-dialog {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .modal-content {
+            margin: 0 auto;
+        }
+ 
+    </style>
+</head>
+<body>
+
+   
+
+    <div class="container">
+        <h2 id="title-page">Preferences</h2>
+        <nav class="navbar navbar-default">
+
+            <div class="container-fluid">
+
+                <div class="collapse navbar-collapse" style="color:#ffffff; background-color:#ffffff;">
+                    @using (Html.BeginForm("Preferences", "Home", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
+                    {
+                        <div class="form-group">
+                            <input type="text" name="search" value="@ViewBag.search" class="form-control" placeholder="search" />
+                        </div>
+                        <button type="submit" value="search" class="btn btn-success">Search</button>
+                        <a class="btn btn-success" data-toggle="modal" data-target="#exemplo">NEW</a>
+                    }
+                </div>
+
+            </div>
+            <div class="modal fade" id="exemplo" data-backdrop="false">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">New Preference</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="form1">
+                                <input style="width:300px;" id="descr" class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Description" name="description_preference" required>
+                               
+                                <input style="width:300px;" id="descr_hidden" hidden="hidden" class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Description" name="description_preference" required>
+
+                                <br />
+                                <input style="margin-top:20px;" name="type_sub" id="paid" value="paid" class="w3-check w3-margin-top" type="radio"> Paid
+                                <br />
+                                <input class="w3-check w3-margin-top" name="type_sub" value="free" id="free" type="radio" checked="checked"> Free
+                            </form>
+                          
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="cpreference" class="btn btn-primary" >Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+
+        </nav>
+        <div>
+            @grid.Table(
+         tableStyle: "table table-responsive table-bordered",
+         columns: grid.Columns(
+             grid.Column(columnName: "Description", header: "Preference's Description"),
+             grid.Column(columnName: "Type", header: "Type of Preference"),
+              grid.Column("Other actions", style: "col1", format:
+            @<text>
+
+                @Html.ActionLink("Edit", "Edit", new { id = item.id_preference }, new { @style = "color:#4d44b4; font-weight: bold " })
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.id_preference }, new { @style = "color:#bd1d02; font-weight: bold" })
+
+            </text>)
+                    )
+             )
+    )
+            <div class="row">
+                <div class="col-sm-6" style="color:#000000;">
+                    @grid.PagerList(mode: WebGridPagerModes.All, paginationStyle: "pagination pagination-small pagination-right")
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+
+            $("#cpreference").click(function (e) {
+                e.preventDefault();
+
+                var input = document.getElementById("descr").value;
+                var type;
+               // alert(input);
+                if (document.getElementById('free').checked) {
+                    type ="free";
+                } else if (document.getElementById('paid').checked) {
+                    type = "paid";
+                }
+
+
+                var preference_details =
+                    {
+                        description: input,
+                        type: type
+
+                    };
+
+               // var t = JSON.stringify(preference_details);
+                
+                $.ajax({
+                    url: 'http://localhost:50422/api/preferencesAPI/',
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(preference_details),  
+                    dataType: "json",
+                    success: function (data) {
+                        alert('Preference: ' + input + ' added with success!');
+                        location.reload();
+                        $('#exemplo').modal('hide');
+                        
+                    },  
+                    error: function (data) {
+                        alert('Error');
+                        $('#exemplo').modal('hide');
+                        //$('#exemplo').hide();
+                    }  
+
+                });
+
+                
+              //  alert(input);
+                
+                
+            });  
+               
+               
+                
+            });
+    
+
+
+    </script>
+
+</body>
+
+
+
+</html>

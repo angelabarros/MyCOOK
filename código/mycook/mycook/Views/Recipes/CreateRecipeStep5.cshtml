@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "CreateRecipeStep5";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/animate.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+    <link href="../css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+          rel="stylesheet" type="text/css" />
+
+
+    <style>
+        a {
+            color: #ffffff;
+        }
+
+
+
+        .container {
+            margin-top: 20px;
+        }
+
+        #title-page {
+            font-size: 40px;
+            text-align: center;
+        }
+
+        #subtitle-page {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #sub-subtitle-page {
+            font-size: 15px;
+            text-align: center;
+        }
+
+
+        .col2 {
+            width: 300px;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div class="container">
+        <h2 id="title-page">New Recipe</h2>
+        <h3 id="subtitle-page">Step 5 of 6</h3>
+        <h5 id="sub-subtitle-page">TAGS</h5>
+
+
+        @model mycook.Models.recipe
+        @using (Html.BeginForm("Step6", "Recipes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <fieldset>
+                <legend>FIFTH STEP</legend>
+
+                @{ 
+                    using (mycook.Models.mycookEntities me = new mycook.Models.mycookEntities())
+                    {
+                        foreach(mycook.Models.preference p in me.preferences)
+                        {
+
+                            @Html.CheckBox("txt" , new { id = p.description, value = p.description }) @p.description;
+                         
+                            <text>
+                
+                                <br />
+                                <br />
+
+
+                            </text>
+                     
+                          
+                        }
+                    }
+                  
+                        }
+
+
+
+
+
+
+            </fieldset>
+
+
+            <input type="submit" name="name" value="NEXT" style="float:right; width:80px;" />
+
+            if (ViewBag.UploadSuccess == true)
+                        {
+                <span> Upload Completed Successfully</span>
+            }
+                    }
+    </div>
+
+    @*
+        <button id="nextbutton" onclick="location.href='@Url.Action("NextStep", "Recipes" )'" style="float:right;">NEXT</button>
+    *@
+
+    <script type="text/javascript">
+
+       
+
+    </script>
+
+
+</body>
+</html>
+
+

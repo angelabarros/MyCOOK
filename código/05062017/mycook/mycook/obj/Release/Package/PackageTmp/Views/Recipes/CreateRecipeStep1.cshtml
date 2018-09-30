@@ -1,0 +1,204 @@
+﻿
+@{
+    ViewBag.Title = "CreateRecipeStep1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/animate.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+    <link href="../css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+          rel="stylesheet" type="text/css" />
+    
+    
+    <style>
+    a {
+    color: #ffffff;
+    }
+
+
+
+    .container {
+    margin-top: 20px;
+    }
+
+    #title-page {
+    font-size: 40px;
+    text-align: center;
+    }
+
+    #subtitle-page {
+    font-size: 20px;
+    text-align: center;
+    }
+
+
+    .col2{
+
+        width:300px;
+    }
+    </style>
+
+    
+
+
+
+
+
+
+</head>
+<body>
+    <div class="container">
+        <h2 id="title-page">New Recipe</h2>
+        <h3 id="subtitle-page">Step 1 of 6</h3>
+
+        @*
+
+            <table style="width:800px; margin-top:30px;">
+                    <tr class="row">
+                        <td  style="width:25%">
+                            <label>Name</label>
+                        </td>
+
+                        <td class="col2">
+                            <input id="txtNameRecipe" style="width:300px;" />
+                        </td>
+                    </tr>
+
+                    <tr class="row">
+                        <td>
+                            <label>Image</label>
+                        </td>
+
+                        <td class="col2" >
+                            <input type="file" name="file" value="Browse" />
+                        </td>
+                    </tr>
+
+                    <tr class="row">
+                        <td>
+                            <label>Portions</label>
+                        </td>
+
+                        <td class="colsmall">
+                       <input type="number" style="width:300px;"/>
+
+
+                    </tr>
+
+                    <tr class="row">
+
+
+                        <td>
+                            <label>Calories Portion</label>
+                        </td>
+
+                        <td class="colsmall">
+                            <input type="number" style="width:300px;" />
+
+                        </td>
+                    </tr>
+
+
+
+
+                </table>
+
+
+        *@
+
+
+        @model mycook.Models.recipe
+       @using (Html.BeginForm("Step2", "Recipes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+       {
+
+            <fieldset >
+                <legend>FIRST STEP</legend>
+                <table id="table-id">
+
+                    <tr>
+                        <td class="labels-login">
+                            @Html.Label("Recipe's Name :")
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.name_recipe)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            @Html.ValidationMessageFor(model => model.name_recipe)
+                        </td>
+                    </tr>
+
+                    <tr></tr>
+                  
+                    <tr>
+                        <td class="labels-login"> @Html.Label("Calories per portion :") </td>
+                        <td> @Html.TextBoxFor(model => model.calories_portion, new { type = "number" }) </td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            @Html.ValidationMessageFor(model => model.calories_portion)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="labels-login"> @Html.Label("Portions :") </td>
+                        <td> @Html.TextBoxFor(model => model.portions, new { type = "number" }) </td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            @Html.ValidationMessageFor(model => model.portions)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="labels-login"> @Html.Label("Image :") </td>
+                        <td> <input type="file" name="file" value="Browse" /></td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            @Html.ValidationMessageFor(model => model.images_recipe)
+                        </td>
+                    </tr>
+                  
+                    <tr>
+                        <td></td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <input type="submit" name="name" value="NEXT" style="float:right; width:80px;" />
+
+            if(ViewBag.UploadSuccess == true)
+            {
+                <span> Upload Completed Successfully</span>
+            }
+       }
+    </div>
+       
+               @*
+        <button id="nextbutton" onclick="location.href='@Url.Action("NextStep", "Recipes" )'" style="float:right;">NEXT</button>
+            *@ 
+        
+       
+
+</body>
+</html>
+
+

@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">MyCook</string>
+    <string name="insert_name">Insert username here</string>
+    <string name="insert_pass">Insert here password</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="confirm_pass">Confirm password</string>
+    <string name="cancel">Cancel</string>
+    <string name="both_fields">You need to fill both fields!</string>
+    <string name="SeeMealPlan">See Recipes</string>
+    <string name="Favorite">Favorite Recipes</string>
+    <string name="History">History</string>
+    <string name="MyProfile">My Profile</string>
+    <string name="logout">Logout</string>
+    <string name="MyPreferences">My Preferences</string>
+    <string name="ChangePassword">Change Password</string>
+    <string name="MealPlanRestrictions">Meal Plan Restrictions</string>
+    <string name="title_activity_fullrecipe">fullrecipe</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+</resources>

@@ -1,0 +1,143 @@
+﻿@model  mycook.Models.user
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <style>
+        body {
+            background-image: url(../images/background.jpg);
+          
+        }
+
+
+        #login-div {
+            position: absolute;
+            float: left;
+            top: 48%;
+        }
+
+        #title-div {
+            font-size: 150px;
+            text-align: center;
+        }
+
+        #title_mycook2 {
+            color: red;
+            font-weight: bold;
+        }
+
+        #title_mycook3 {
+            color: yellow;
+            font-weight: bold;
+        }
+
+        #title_mycook4 {
+            color: green;
+            font-weight: bold;
+        }
+
+        #title_mycook5 {
+            color: orange;
+            font-weight: bold;
+        }
+
+        #title_mycook {
+            font-weight: bold;
+        }
+
+
+        #table-id {
+            border-spacing: 0.5em;
+        }
+
+        .labels-login {
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="title-div">
+        <label id="title_mycook">My</label><label id="title_mycook2">C</label><label id="title_mycook3">o</label><label id="title_mycook4">o</label><label id="title_mycook5">k</label>
+
+    </div>
+
+
+    <div id="login-div">
+
+        @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
+        {
+
+
+            <fieldset style="padding: 50px 20px 50px 20px; border-bottom-color:red; border-left-color:yellow; border-right-color:orange; border-top-color:green; border-radius:15px;">
+                <legend style="text-align:center;text-transform: uppercase; font-size:42px;
+            font-weight:700;">LOGIN</legend>
+                <table id="table-id">
+
+                    <tr>
+                        <td class="labels-login">
+                            @Html.LabelFor(model => model.username)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.username)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            @Html.ValidationMessageFor(model => model.username)
+                        </td>
+                    </tr>
+
+                    <tr></tr>
+                    <tr>
+                        <td class="labels-login"> @Html.LabelFor(model => model.password) </td>
+                        <td> @Html.PasswordFor(model => model.password) </td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            @Html.ValidationMessageFor(model => model.password)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+
+                            <label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" name="name" value="Login" />
+                            <input type="reset" name="name" value="Clear" />
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+        }
+    </div>
+    
+
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+   
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+
+
+</body>
+</html>

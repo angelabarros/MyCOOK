@@ -1,0 +1,63 @@
+﻿@model IEnumerable<mycook.Models.ingredient>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<meta name="viewport" content="width=device-width" />
+
+<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/animate.min.css" rel="stylesheet" type="text/css" />
+
+<link href="../css/main.css" rel="stylesheet" type="text/css" />
+<link href="../css/responsive.css" rel="stylesheet" type="text/css" />
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+      rel="stylesheet" type="text/css" />
+
+
+
+<style>
+
+    a {
+        color: #428bca;
+    }
+
+    #title-page {
+        font-size: 40px;
+        text-align: center;
+        margin-top: 50px;
+    }
+</style>
+
+
+
+<h2 id="title-page">Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" >
+    <tr>
+        <th>
+            @Html.Label("Ingredient's Name")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="width:680px; max-width:680px;">
+            @Html.DisplayFor(modelItem => item.name_ingredient)
+        </td>
+        <td >
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_ingredient}, new { @style = "color:#f97508; font-weight: bold " }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_ingredient }, new { @style = "color:#4d44b4; font-weight: bold " }) |
+            @Html.ActionLink("Deactivate", "Delete", new { id=item.id_ingredient }, new { @style = "color:#bd1d02; font-weight: bold " })
+        </td>
+    </tr>
+}
+
+</table>

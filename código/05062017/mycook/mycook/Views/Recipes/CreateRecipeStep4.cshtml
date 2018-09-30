@@ -1,0 +1,187 @@
+﻿
+@{
+    ViewBag.Title = "CreateRecipeStep4";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/animate.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+    <link href="../css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+          rel="stylesheet" type="text/css" />
+
+
+    <style>
+        a {
+            color: #ffffff;
+        }
+
+
+
+        .container {
+            margin-top: 20px;
+        }
+
+        #title-page {
+            font-size: 40px;
+            text-align: center;
+        }
+
+        #subtitle-page {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #sub-subtitle-page {
+            font-size: 15px;
+            text-align: center;
+        }
+
+
+        .col2 {
+            width: 300px;
+        }
+    </style>
+
+   
+</head>
+<body>
+    <div class="container">
+        <h2 id="title-page">New Recipe</h2>
+        <h3 id="subtitle-page">Step 4 of 6</h3>
+        <h5 id="sub-subtitle-page">Nutritional Information</h5>
+
+
+        @model mycook.Models.recipe
+        @using (Html.BeginForm("Step5", "Recipes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <fieldset>
+                <legend>FOURTH STEP</legend>
+
+                <div>
+                    <table style="width:900px; max-width:900px;">
+                        <tr style="height:70px; max-height:70px; ">
+                            <td>
+                                @Html.Label("Fat: ")
+                               
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fat_per_portion, new { type = "number", required = "required" })
+                            </td>
+
+                            <td>
+                                @Html.Label("Cholesterol: ")
+                               
+                            </td>
+                          
+                            <td>
+                                @Html.TextBoxFor(model => model.cholesterol_per_portion, new { type = "number", required = "required" })
+                            </td>
+                        </tr>
+
+                        @*second row*@
+
+                        <tr style="height:70px; max-height:70px; ">
+                            <td>
+                                @Html.Label("Saturated: ")
+                               
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.saturatedfat_per_portion, new { type = "number", required = "required" })
+                            </td>
+
+                            <td>
+                                @Html.Label("Carbohydrate: ")
+                               
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.carbs_per_portion, new { type = "number", required = "required" })
+                            </td>
+                        </tr>
+
+                        @*third row*@
+
+                        <tr style="height:70px; max-height:70px; ">
+
+                            <td>
+                                @Html.Label("Protein: ")
+                               
+                            </td>
+
+                            <td>
+                                @Html.TextBoxFor(model => model.protein_per_portion, new { type = "number", required = "required" })
+                            </td>
+
+                            <td>
+                                @Html.Label("Fibre: ")
+                              
+                            </td>
+
+                            <td>
+                                @Html.TextBoxFor(model => model.fibre_per_portion, new { type = "number", required = "required" })
+                            </td>
+
+                        </tr>
+
+                        @*fourth row*@
+
+                        <tr style="height:70px; max-height:70px; ">
+
+                            <td>
+                                @Html.Label("Sodium: ")
+                               
+                            </td>
+
+                            <td>
+                                @Html.TextBoxFor(model => model.sodium_per_portion, new { type = "number" , required = "required" })
+                            </td>
+
+                            <td>
+                                @Html.Label("Sugars: ")
+                              
+                            </td>
+
+                            <td>
+                                @Html.TextBoxFor(model => model.sugar_per_portion, new { type = "number" , required = "required" })
+                            </td>
+
+                        </tr>
+
+
+                    </table>
+                    
+                   
+
+                </div>
+
+
+            </fieldset>
+            <input type="submit" name="name" value="NEXT" style="float:right; width:80px;" />
+
+            if (ViewBag.UploadSuccess == true)
+            {
+                <span> Upload Completed Successfully</span>
+            }
+        }
+    </div>
+
+    @*
+        <button id="nextbutton" onclick="location.href='@Url.Action("NextStep", "Recipes" )'" style="float:right;">NEXT</button>
+    *@
+
+
+
+</body>
+</html>
+
+

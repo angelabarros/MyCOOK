@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Refresh" content="5;url=Index" />
+    <title>logout</title>
+    <style>
+
+        body {
+            background-color: #F47321;
+        }
+        #spinner {
+           position: absolute;
+           left:22%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div> 
+        <div id="result"></div>
+        <img id="spinner" src="~/images/a218f772a59aad480fcded754fa01824.gif">
+       
+        @Ajax.ActionLink("GO BACK", "Index", "Login", null, new AjaxOptions { LoadingElementDuration = 500, LoadingElementId = "busydiv", HttpMethod = "Post", UpdateTargetId = "targetDiv", OnFailure = "PostFailure", OnSuccess = "PostSuccess", OnComplete = "PostOnComplete" }, null)
+    </div>
+</body>
+</html>
+<script src="~/scripts/jquery-1.8.0.js"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js"></script>

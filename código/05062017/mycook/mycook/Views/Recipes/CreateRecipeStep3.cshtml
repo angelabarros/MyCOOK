@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "CreateRecipeStep3";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/animate.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+    <link href="../css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+          rel="stylesheet" type="text/css" />
+
+
+    <style>
+        a {
+            color: #ffffff;
+        }
+
+
+
+        .container {
+            margin-top: 20px;
+        }
+
+        #title-page {
+            font-size: 40px;
+            text-align: center;
+        }
+
+        #subtitle-page {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #sub-subtitle-page {
+            font-size: 15px;
+            text-align: center;
+        }
+
+
+        .col2 {
+            width: 300px;
+        }
+    </style>
+
+    <meta name="viewport" />
+    <script type="text/javascript">
+
+        var contador = 1;
+
+        function GetDynamicTextBox(value, val) {
+            return '<div>  <label name="teste">Step :</label> <textarea name="txttest_step" style="width:700px; max-width:700px; height:100px; max-height:100px;" > </textarea>  <input class="btn-danger" type="button" onclick="RemoveTextBox(this)" value="Remove" style="width:70px; max-width:70px; margin-left:50px;"/> </br> </div>';
+        }
+
+
+        function AddTextBox() {
+            contador++;
+            var div = document.createElement('DIV');
+            div.innerHTML = GetDynamicTextBox("", contador);
+            document.getElementById("divCont").appendChild(div);
+
+        }
+
+        function RemoveTextBox(div) {
+            document.getElementById("divCont").removeChild(div.parentNode.parentNode);
+        }
+
+
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <h2 id="title-page">New Recipe</h2>
+        <h3 id="subtitle-page">Step 3 of 6</h3>
+        <h5 id="sub-subtitle-page">Step by Step</h5>
+
+
+        @model mycook.Models.recipe
+        @using (Html.BeginForm("Step4", "Recipes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <fieldset>
+                <legend>THIRD STEP</legend>
+
+                <div>
+
+
+                    <div id="divCont">
+                        <div>
+                                                       @*
+        <input type="text" name="txttest" style="width:500px; max-width:500px;" placeholder="Insert name of ingredient" />
+
+                                                    *@ 
+                            
+                            <label name="teste">Step :</label>
+                            <textarea name="txttest_step" style="width:700px; max-width:700px; height:100px; max-height:100px;" > </textarea>
+                          
+                            <input class="btn-success" type="button" onclick="AddTextBox()" value="Add" style="width:70px; max-width:70px; margin-left:50px;" />
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </fieldset>
+            <input type="submit" name="name" value="NEXT" style="float:right; width:80px;" />
+
+            if (ViewBag.UploadSuccess == true)
+            {
+                <span> Upload Completed Successfully</span>
+            }
+
+            if (ViewData["STEPS"] != null)
+            {
+                <div id="successMessage" style="color:red;">
+                    You need to add steps to the recipe
+                </div>
+            }
+        }
+    </div>
+
+    @*
+        <button id="nextbutton" onclick="location.href='@Url.Action("NextStep", "Recipes" )'" style="float:right;">NEXT</button>
+    *@
+
+
+
+</body>
+</html>
+
+

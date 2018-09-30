@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    tools:context="com.example.angel.mycook.Menu">
+
+
+    <Button
+        android:id="@+id/MyProfile"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:onClick="myprofile"
+        android:text="@string/MyProfile"
+        android:layout_marginLeft="60dp"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="66dp"
+        android:layout_below="@+id/TVMenu_logado"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp" />
+
+    <Button
+        android:id="@+id/SeeMealPlan"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_alignEnd="@+id/MyProfile"
+        android:layout_alignLeft="@+id/MyProfile"
+        android:layout_alignRight="@+id/MyProfile"
+        android:layout_alignStart="@+id/MyProfile"
+        android:layout_below="@+id/MyProfile"
+        android:layout_marginTop="55dp"
+        android:elevation="0dp"
+        android:onClick="mealPlan"
+        android:text="@string/SeeMealPlan"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="66dp" />
+
+    <TextView
+        android:id="@+id/TVMenu_logado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="TextView"
+        android:textSize="25dp" />
+</RelativeLayout>

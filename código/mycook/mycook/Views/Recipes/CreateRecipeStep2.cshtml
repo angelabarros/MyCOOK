@@ -1,0 +1,198 @@
+﻿
+@{
+    ViewBag.Title = "CreateRecipeStep2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/animate.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="../css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+          rel="stylesheet" type="text/css" />
+
+
+    <style>
+        a {
+            color: #ffffff;
+        }
+
+
+
+        .container {
+            margin-top: 20px;
+        }
+
+        #title-page {
+            font-size: 40px;
+            text-align: center;
+        }
+
+        #subtitle-page {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #sub-subtitle-page {
+            font-size: 15px;
+            text-align: center;
+        }
+
+
+        .col2 {
+            width: 300px;
+        }
+    </style>
+
+    <meta name="viewport"/>
+    <script type="text/javascript">
+
+        function GetDynamicTextBox(value) {
+            return '<div><input  id ="text" type= "text" name= "txttest" style= "width:500px; max-width:500px;" placeholder="Insert name of ingredient" />  <input type="number" name="txttestnumber" style="width:200px; max-width:200px; margin-left:40px;"  placeholder="Insert quantity"/><input class="btn-danger" type="button" onclick="RemoveTextBox(this)" value="Remove" style="width:70px; max-width:70px;"/> </div>';
+        }
+
+
+        function AddTextBox() {
+
+            var div = document.createElement('DIV');
+            div.innerHTML = GetDynamicTextBox("");
+            document.getElementById("divCont").appendChild(div);
+
+        }
+
+        function RemoveTextBox(div) {
+            document.getElementById("divCont").removeChild(div.parentNode.parentNode);
+        }
+
+
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <h2 id="title-page">New Recipe</h2>
+        <h3 id="subtitle-page">Step 2 of 6</h3>
+        <h5 id="sub-subtitle-page">Ingredients</h5>
+
+
+        @model mycook.Models.recipe
+        @using (Html.BeginForm("Step3", "Recipes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <fieldset>
+                <legend>SECOND STEP</legend>
+
+                <div>
+
+                   @using (Html.BeginForm("Step3", "Recipes", FormMethod.Post))
+                   {
+                        <div id="divCont">
+                            <div>
+                                <input id ="text" type="text"  onkeypress="myFunction()" name="txttest" style="width:500px; max-width:500px;" placeholder="Insert name of ingredient" />
+                                <input type="number" name="txttestnumber" style="width:200px; max-width:200px; margin-left:40px;" placeholder="Insert quantity" /><input class="btn-success" type="button" onclick="AddTextBox()" value="Add" style="width:70px; max-width:70px;" />
+                            </div>
+
+                        </div>
+                        <input type="submit" name="name" value="NEXT" style="float:right; width:80px;" />
+
+                   }
+
+
+                </div>
+
+
+            </fieldset>
+            
+
+
+            if (ViewBag.UploadSuccess == true)
+            {
+                <span> Upload Completed Successfully</span>
+            }
+
+            if (ViewData["Success"] != null)
+            {
+                <div id="successMessage" style="color:red;">
+                  You need to add ingredients to the recipe
+                </div>
+            }
+
+            if (ViewData["ADD"] != null)
+            {
+                <div id="successMessage" style="color:red;">
+                    That ingredient does not exist in the database! Please create it <a href="~/ingredients/" style="color:red; font-weight:bold;" >here</a> .
+                </div>
+            }
+        }
+    </div>
+
+    @*
+        <button id="nextbutton" onclick="location.href='@Url.Action("NextStep", "Recipes" )'" style="float:right;">NEXT</button>
+    *@
+
+
+    @*<script type=”text/javascript” language=”javascript”>
+
+    $(document).ready(function () {
+        $(‘#text’).autocomplete({
+            source: ‘@Url.Action("Autocomplete")’
+        });
+    })
+    </script>*@
+
+
+
+        
+            <script type="text/javascript">
+            $(document).ready(function () {
+
+                var availableTags = [
+                    "ActionScript",
+                    "AppleScript",
+                    "Asp",
+                    "BASIC",
+                    "C",
+                    "C++",
+                    "Clojure",
+                    "COBOL",
+                    "ColdFusion",
+                    "Erlang",
+                    "Fortran",
+                    "Groovy",
+                    "Haskell",
+                    "Java",
+                    "JavaScript",
+                    "Lisp",
+                    "Perl",
+                    "PHP",
+                    "Python",
+                    "Ruby",
+                    "Scala",
+                    "Scheme"
+                    ];
+
+                document.getElementById("text").onkeypress = function () { myFunction() };
+
+                function myFunction() {
+                    document.getElementById("text").autocomplete({
+                        source: availableTags
+                    });
+                }
+                });
+
+
+        </script>
+      
+</body>
+</html>
+
+

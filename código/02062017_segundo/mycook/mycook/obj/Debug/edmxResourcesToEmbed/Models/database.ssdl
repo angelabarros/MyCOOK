@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mycookModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="favorite_recipes">
+    <Key>
+      <PropertyRef Name="id_user" />
+      <PropertyRef Name="id_recipe" />
+    </Key>
+    <Property Name="id_user" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="id_recipe" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="images_recipe">
+    <Key>
+      <PropertyRef Name="id_image" />
+      <PropertyRef Name="id_recipe" />
+    </Key>
+    <Property Name="id_image" Type="numeric" Precision="9" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="url" Type="varchar" MaxLength="2000" />
+    <Property Name="id_recipe" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ingredient">
+    <Key>
+      <PropertyRef Name="id_ingredient" />
+    </Key>
+    <Property Name="id_ingredient" Type="numeric" Precision="9" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name_ingredient" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ingredients_recipe">
+    <Key>
+      <PropertyRef Name="id_recipe" />
+      <PropertyRef Name="id_ingredient" />
+    </Key>
+    <Property Name="id_recipe" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="id_ingredient" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="quantity_per_portion" Type="numeric" Precision="9" Scale="0" />
+  </EntityType>
+  <EntityType Name="ingredients_to_buy">
+    <Key>
+      <PropertyRef Name="id_shoppinglist" />
+      <PropertyRef Name="id_ingredient" />
+    </Key>
+    <Property Name="id_shoppinglist" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="id_ingredient" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="amount" Type="numeric" Precision="9" Scale="0" />
+  </EntityType>
+  <EntityType Name="meal_plan">
+    <Key>
+      <PropertyRef Name="id_mealplan" />
+    </Key>
+    <Property Name="id_mealplan" Type="numeric" Precision="9" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_user" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="preference_plan">
+    <Key>
+      <PropertyRef Name="id_preference" />
+    </Key>
+    <Property Name="id_preference" Type="numeric" Precision="9" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="200" />
+    <Property Name="value" Type="numeric" Precision="9" Scale="0" />
+    <Property Name="id_user" Type="numeric" Precision="9" Scale="0" />
+  </EntityType>
+  <EntityType Name="preferences">
+    <Key>
+      <PropertyRef Name="id_preference" />
+    </Key>
+    <Property Name="id_preference" Type="numeric" Precision="9" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="50" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="recipe">
+    <Key>
+      <PropertyRef Name="id_recipe" />
+    </Key>
+    <Property Name="id_recipe" Type="numeric" Precision="9" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name_recipe" Type="varchar" MaxLength="50" />
+    <Property Name="calories_portion" Type="numeric" Precision="9" Scale="0" />
+    <Property Name="portions" Type="numeric" Precision="9" Scale="0" />
+    <Property Name="fat_per_portion" Type="numeric" Precision="9" Scale="0" />
+    <Property Name="saturatedfat_per_portion" Type="numeric" Precision="9" Scale="0" />
+    <Property Name="protein_per_portion" Type="numeric" Precision="9" Scale="0" />
+    <Property Name="sodium_per_portion" Type="numeric" Precision="9" Scale="0" />
+    <Property Name="cholesterol_per_portion" Type="numeric" Precision="9" Scale="0" />
+    <Property Name="carbs_per_portion" Type="numeric" Precision="9" Scale="0" />
+    <Property Name="sugar_per_portion" Type="numeric" Precision="9" Scale="0" />
+    <Property Name="fibre_per_portion" Type="numeric" Precision="9" Scale="0" />
+  </EntityType>
+  <EntityType Name="recipe_preferences">
+    <Key>
+      <PropertyRef Name="id_recipe" />
+      <PropertyRef Name="id_preference" />
+    </Key>
+    <Property Name="id_recipe" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="id_preference" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="recipes_mealplan">
+    <Key>
+      <PropertyRef Name="id_recipe" />
+      <PropertyRef Name="id_mealplan" />
+    </Key>
+    <Property Name="id_recipe" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="id_mealplan" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="shopping_list">
+    <Key>
+      <PropertyRef Name="id_shoppinglist" />
+    </Key>
+    <Property Name="id_mealplan" Type="numeric" Precision="9" Scale="0" />
+    <Property Name="id_user" Type="numeric" Precision="9" Scale="0" />
+    <Property Name="id_shoppinglist" Type="numeric" Precision="9" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="steps">
+    <Key>
+      <PropertyRef Name="id_step" />
+    </Key>
+    <Property Name="id_step" Type="numeric" Precision="9" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_recipe" Type="numeric" Precision="9" Scale="0" />
+    <Property Name="description" Type="varchar" MaxLength="2000" />
+    <Property Name="number_order" Type="numeric" Precision="9" Scale="0" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="user_preferences">
+    <Key>
+      <PropertyRef Name="id_preference" />
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_preference" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="id_user" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="numeric" Precision="9" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="role" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="subscription" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__favorite___id_re__403A8C7D">
+    <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
+    <End Role="favorite_recipes" Type="Self.favorite_recipes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="recipe">
+        <PropertyRef Name="id_recipe" />
+      </Principal>
+      <Dependent Role="favorite_recipes">
+        <PropertyRef Name="id_recipe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__favorite___id_us__412EB0B6">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="favorite_recipes" Type="Self.favorite_recipes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="favorite_recipes">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__images_re__id_re__5812160E">
+    <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
+    <End Role="images_recipe" Type="Self.images_recipe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="recipe">
+        <PropertyRef Name="id_recipe" />
+      </Principal>
+      <Dependent Role="images_recipe">
+        <PropertyRef Name="id_recipe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ingredien__id_in__3D5E1FD2">
+    <End Role="ingredient" Type="Self.ingredient" Multiplicity="1" />
+    <End Role="ingredients_recipe" Type="Self.ingredients_recipe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ingredient">
+        <PropertyRef Name="id_ingredient" />
+      </Principal>
+      <Dependent Role="ingredients_recipe">
+        <PropertyRef Name="id_ingredient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ingredien__id_in__5535A963">
+    <End Role="ingredient" Type="Self.ingredient" Multiplicity="1" />
+    <End Role="ingredients_to_buy" Type="Self.ingredients_to_buy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ingredient">
+        <PropertyRef Name="id_ingredient" />
+      </Principal>
+      <Dependent Role="ingredients_to_buy">
+        <PropertyRef Name="id_ingredient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ingredien__id_re__3C69FB99">
+    <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
+    <End Role="ingredients_recipe" Type="Self.ingredients_recipe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="recipe">
+        <PropertyRef Name="id_recipe" />
+      </Principal>
+      <Dependent Role="ingredients_recipe">
+        <PropertyRef Name="id_recipe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ingredien__id_sh__5441852A">
+    <End Role="shopping_list" Type="Self.shopping_list" Multiplicity="1" />
+    <End Role="ingredients_to_buy" Type="Self.ingredients_to_buy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shopping_list">
+        <PropertyRef Name="id_shoppinglist" />
+      </Principal>
+      <Dependent Role="ingredients_to_buy">
+        <PropertyRef Name="id_shoppinglist" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__meal_plan__id_us__440B1D61">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="meal_plan" Type="Self.meal_plan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="meal_plan">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__preferenc__id_us__5FB337D6">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="preference_plan" Type="Self.preference_plan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="preference_plan">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__recipe_pr__id_pr__5CD6CB2B">
+    <End Role="preferences" Type="Self.preferences" Multiplicity="1" />
+    <End Role="recipe_preferences" Type="Self.recipe_preferences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="preferences">
+        <PropertyRef Name="id_preference" />
+      </Principal>
+      <Dependent Role="recipe_preferences">
+        <PropertyRef Name="id_preference" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__recipe_pr__id_re__5BE2A6F2">
+    <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
+    <End Role="recipe_preferences" Type="Self.recipe_preferences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="recipe">
+        <PropertyRef Name="id_recipe" />
+      </Principal>
+      <Dependent Role="recipe_preferences">
+        <PropertyRef Name="id_recipe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__recipes_m__id_me__4D94879B">
+    <End Role="meal_plan" Type="Self.meal_plan" Multiplicity="1" />
+    <End Role="recipes_mealplan" Type="Self.recipes_mealplan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="meal_plan">
+        <PropertyRef Name="id_mealplan" />
+      </Principal>
+      <Dependent Role="recipes_mealplan">
+        <PropertyRef Name="id_mealplan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__recipes_m__id_re__4CA06362">
+    <End Role="recipe" Type="Self.recipe" Multiplicity="1" />
+    <End Role="recipes_mealplan" Type="Self.recipes_mealplan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="recipe">
+        <PropertyRef Name="id_recipe" />
+      </Principal>
+      <Dependent Role="recipes_mealplan">
+        <PropertyRef Name="id_recipe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__shopping___id_me__5165187F">
+    <End Role="meal_plan" Type="Self.meal_plan" Multiplicity="0..1" />
+    <End Role="shopping_list" Type="Self.shopping_list" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="meal_plan">
+        <PropertyRef Name="id_mealplan" />
+      </Principal>
+      <Dependent Role="shopping_list">
+        <PropertyRef Name="id_mealplan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__shopping___id_us__5070F446">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="shopping_list" Type="Self.shopping_list" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="shopping_list">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__steps__id_recipe__37A5467C">
+    <End Role="recipe" Type="Self.recipe" Multiplicity="0..1" />
+    <End Role="steps" Type="Self.steps" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="recipe">
+        <PropertyRef Name="id_recipe" />
+      </Principal>
+      <Dependent Role="steps">
+        <PropertyRef Name="id_recipe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_pref__id_pr__31EC6D26">
+    <End Role="preferences" Type="Self.preferences" Multiplicity="1" />
+    <End Role="user_preferences" Type="Self.user_preferences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="preferences">
+        <PropertyRef Name="id_preference" />
+      </Principal>
+      <Dependent Role="user_preferences">
+        <PropertyRef Name="id_preference" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_pref__id_us__32E0915F">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="user_preferences" Type="Self.user_preferences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="user_preferences">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="mycookModelStoreContainer">
+    <EntitySet Name="favorite_recipes" EntityType="Self.favorite_recipes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="images_recipe" EntityType="Self.images_recipe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ingredient" EntityType="Self.ingredient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ingredients_recipe" EntityType="Self.ingredients_recipe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ingredients_to_buy" EntityType="Self.ingredients_to_buy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="meal_plan" EntityType="Self.meal_plan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="preference_plan" EntityType="Self.preference_plan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="preferences" EntityType="Self.preferences" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="recipe" EntityType="Self.recipe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="recipe_preferences" EntityType="Self.recipe_preferences" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="recipes_mealplan" EntityType="Self.recipes_mealplan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="shopping_list" EntityType="Self.shopping_list" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="steps" EntityType="Self.steps" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user_preferences" EntityType="Self.user_preferences" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__favorite___id_re__403A8C7D" Association="Self.FK__favorite___id_re__403A8C7D">
+      <End Role="recipe" EntitySet="recipe" />
+      <End Role="favorite_recipes" EntitySet="favorite_recipes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__favorite___id_us__412EB0B6" Association="Self.FK__favorite___id_us__412EB0B6">
+      <End Role="users" EntitySet="users" />
+      <End Role="favorite_recipes" EntitySet="favorite_recipes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__images_re__id_re__5812160E" Association="Self.FK__images_re__id_re__5812160E">
+      <End Role="recipe" EntitySet="recipe" />
+      <End Role="images_recipe" EntitySet="images_recipe" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ingredien__id_in__3D5E1FD2" Association="Self.FK__ingredien__id_in__3D5E1FD2">
+      <End Role="ingredient" EntitySet="ingredient" />
+      <End Role="ingredients_recipe" EntitySet="ingredients_recipe" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ingredien__id_in__5535A963" Association="Self.FK__ingredien__id_in__5535A963">
+      <End Role="ingredient" EntitySet="ingredient" />
+      <End Role="ingredients_to_buy" EntitySet="ingredients_to_buy" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ingredien__id_re__3C69FB99" Association="Self.FK__ingredien__id_re__3C69FB99">
+      <End Role="recipe" EntitySet="recipe" />
+      <End Role="ingredients_recipe" EntitySet="ingredients_recipe" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ingredien__id_sh__5441852A" Association="Self.FK__ingredien__id_sh__5441852A">
+      <End Role="shopping_list" EntitySet="shopping_list" />
+      <End Role="ingredients_to_buy" EntitySet="ingredients_to_buy" />
+    </AssociationSet>
+    <AssociationSet Name="FK__meal_plan__id_us__440B1D61" Association="Self.FK__meal_plan__id_us__440B1D61">
+      <End Role="users" EntitySet="users" />
+      <End Role="meal_plan" EntitySet="meal_plan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__preferenc__id_us__5FB337D6" Association="Self.FK__preferenc__id_us__5FB337D6">
+      <End Role="users" EntitySet="users" />
+      <End Role="preference_plan" EntitySet="preference_plan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__recipe_pr__id_pr__5CD6CB2B" Association="Self.FK__recipe_pr__id_pr__5CD6CB2B">
+      <End Role="preferences" EntitySet="preferences" />
+      <End Role="recipe_preferences" EntitySet="recipe_preferences" />
+    </AssociationSet>
+    <AssociationSet Name="FK__recipe_pr__id_re__5BE2A6F2" Association="Self.FK__recipe_pr__id_re__5BE2A6F2">
+      <End Role="recipe" EntitySet="recipe" />
+      <End Role="recipe_preferences" EntitySet="recipe_preferences" />
+    </AssociationSet>
+    <AssociationSet Name="FK__recipes_m__id_me__4D94879B" Association="Self.FK__recipes_m__id_me__4D94879B">
+      <End Role="meal_plan" EntitySet="meal_plan" />
+      <End Role="recipes_mealplan" EntitySet="recipes_mealplan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__recipes_m__id_re__4CA06362" Association="Self.FK__recipes_m__id_re__4CA06362">
+      <End Role="recipe" EntitySet="recipe" />
+      <End Role="recipes_mealplan" EntitySet="recipes_mealplan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__shopping___id_me__5165187F" Association="Self.FK__shopping___id_me__5165187F">
+      <End Role="meal_plan" EntitySet="meal_plan" />
+      <End Role="shopping_list" EntitySet="shopping_list" />
+    </AssociationSet>
+    <AssociationSet Name="FK__shopping___id_us__5070F446" Association="Self.FK__shopping___id_us__5070F446">
+      <End Role="users" EntitySet="users" />
+      <End Role="shopping_list" EntitySet="shopping_list" />
+    </AssociationSet>
+    <AssociationSet Name="FK__steps__id_recipe__37A5467C" Association="Self.FK__steps__id_recipe__37A5467C">
+      <End Role="recipe" EntitySet="recipe" />
+      <End Role="steps" EntitySet="steps" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_pref__id_pr__31EC6D26" Association="Self.FK__user_pref__id_pr__31EC6D26">
+      <End Role="preferences" EntitySet="preferences" />
+      <End Role="user_preferences" EntitySet="user_preferences" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_pref__id_us__32E0915F" Association="Self.FK__user_pref__id_us__32E0915F">
+      <End Role="users" EntitySet="users" />
+      <End Role="user_preferences" EntitySet="user_preferences" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

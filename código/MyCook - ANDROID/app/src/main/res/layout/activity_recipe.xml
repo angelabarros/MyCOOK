@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.angel.mycook.activityRecipe">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:text="NAME RECIPE" />
+
+    <TextView
+        android:id="@+id/tv_calories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView3"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="76dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tv_portions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="51dp"
+        android:text="TextView"
+        android:layout_below="@+id/tv_calories"
+        android:layout_alignLeft="@+id/tv_calories"
+        android:layout_alignStart="@+id/tv_calories" />
+
+    <TextView
+        android:id="@+id/tv_fat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="TextView"
+        android:layout_below="@+id/tv_portions"
+        android:layout_alignLeft="@+id/tv_portions"
+        android:layout_alignStart="@+id/tv_portions" />
+
+    <TextView
+        android:id="@+id/tv_saturatedfat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:text="TextView"
+        android:layout_below="@+id/tv_fat"
+        android:layout_alignLeft="@+id/tv_fat"
+        android:layout_alignStart="@+id/tv_fat" />
+
+    <TextView
+        android:id="@+id/tv_sugar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="TextView"
+        android:layout_below="@+id/tv_saturatedfat"
+        android:layout_alignLeft="@+id/tv_saturatedfat"
+        android:layout_alignStart="@+id/tv_saturatedfat" />
+
+    <TextView
+        android:id="@+id/tv_carbs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="TextView"
+        android:layout_alignTop="@+id/tv_sugar"
+        android:layout_alignLeft="@+id/tv_cholesterol"
+        android:layout_alignStart="@+id/tv_cholesterol" />
+
+    <TextView
+        android:id="@+id/tv_cholesterol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_alignTop="@+id/tv_saturatedfat"
+        android:layout_alignLeft="@+id/tv_protein"
+        android:layout_alignStart="@+id/tv_protein" />
+
+    <TextView
+        android:id="@+id/tv_fibre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_calories"
+        android:layout_toEndOf="@+id/textView3"
+        android:layout_toRightOf="@+id/textView3"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tv_sodium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_fibre"
+        android:layout_alignStart="@+id/tv_fibre"
+        android:layout_alignTop="@+id/tv_portions"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tv_protein"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_sodium"
+        android:layout_alignStart="@+id/tv_sodium"
+        android:layout_alignTop="@+id/tv_fat"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/btnIngredients"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp"
+        android:onClick="seeIngredients"
+        android:text="Ingredients" />
+
+    <Button
+        android:id="@+id/btnSteps"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnIngredients"
+        android:layout_alignBottom="@+id/btnIngredients"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:onClick="seeSteps"
+        android:text="STEPS" />
+</RelativeLayout>
